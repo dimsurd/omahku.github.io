@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/output.css" />
+    <title>Omahku</title>
+    <link rel="shortcut icon" href="./assets/img/omahku-logo.png" />
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+  </head>
+  <!-- Demo styles -->
+  <style>
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-height: 255px;
+      object-fit: none;
+    }
+    .swiper-wrapper {
+      padding-left: 100px;
+      height: 450px;
+      margin-top: 10px !important;
+    }
+    .cards-property {
+      width: 100%;
+      height: 100%;
+      max-height: 399px;
+      max-width: 442px;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 15px;
+    }
+    .navigations {
+      width: 50px;
+      height: 50px;
+    }
+    .swiper-button-next,
+    .swiper-rtl .swiper-button-prev {
+      top: 25px;
+      right: 145px !important;
+    }
+    .swiper-button-prev,
+    .swiper-rtl .swiper-button-prev {
+      top: 25px;
+      right: 222px;
+      left: auto;
+    }
+    /* .swiper-button-prev {
+      background-image: url("./assets/img/btn-prev.png") !important;
+    }
+
+    .swiper-button-next {
+      background-image: url("./assets/img/btn-next.png") !important;
+    } */
+
+    @media only screen and (max-width: 768px) {
+      .swiper-button-next,
+      .swiper-button-prev {
+        display: none;
+      }
+    }
+  </style>
+  <body class="font-body">
+    <!-- Navbar -->
+    <section id="navbar" class="mb-10 mt-5 md:mb-20">
+      <div class="flex place-content-center w-full md:px-[96px] md:pt-5 px-5">
+        <div
+          class="flex flex-col md:flex-row justify-between w-full items-center"
+        >
+          <div
+            class="flex w-full md:w-auto flex-row md:flex-none justify-between"
+          >
+            <a href="#" class="flex items-center">
+              <img src="./assets/img/omahku-logo.png" alt="logo-omahku" />
+              <span class="text-ungu font-bold ml-2 text-2xl">Omahku</span>
+            </a>
+            <button
+              onclick="myFunction()"
+              data-collapse-toggle="navbar-default"
+              type="button"
+              class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              aria-controls="navbar-default"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Open main menu</span>
+              <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="menus w-1/3 md:block hidden" id="nav">
+            <ul
+              class="md:flex md:flex-row justify-between space-y-4 md:space-y-0 mt-4 md:mt-0"
+            >
+              <li>
+                <a
+                  class="font-semibold text-xl text-black hover:text-black"
+                  href="#"
+                  >HOME</a
+                >
+              </li>
+              <li>
+                <a
+                  class="font-semibold text-xl text-abu hover:text-black"
+                  href="#"
+                  >ABOUT</a
+                >
+              </li>
+              <li>
+                <a
+                  class="font-semibold text-xl text-abu hover:text-black"
+                  href="#"
+                  >BLOG</a
+                >
+              </li>
+              <li>
+                <a
+                  class="font-semibold text-xl text-abu hover:text-black"
+                  href="#"
+                  >PROPERTY</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="btn md:flex hidden" id="btn-nav">
+            <button
+              class="hover:bg-unguTua text-lg font-semibold bg-ungu py-3 px-7 text-white mt-4"
+            >
+              Register Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Navbar -->
+    <div class="container-fluid px-5 md:px-[96px] w-full max-w-[2048px]">
+      <div class="header-section md:mb-20">
+        <div class="flex flex-col md:flex-row text-center">
+          <div class="md:w-1/2 text-left">
+            <p class="text-4xl md:text-8xl font-bold">
+              <span class="inline md:block leading-relaxed md:leading-[125%]"
+                >Let's Find</span
+              >
+              <span class="inline md:block leading-relaxed md:leading-[125%]">
+                Your Comfort</span
+              >
+              <span
+                class="text-ungu inline md:block leading-relaxed md:leading-[125%]"
+                >House!
+              </span>
+            </p>
+          </div>
+          <div class="md:w-1/2 text-left place-self-center">
+            <p
+              class="text-lg md:text-2xl text-left text-abu leading-relaxed md:leading-[200%] font-semibold"
+            >
+              <span class="inline md:block"
+                >Find comfort in the house with us, want to find</span
+              ><span class="inline md:block"
+                >a home? we are ready to help you</span
+              >
+              <span class="inline md:block">
+                wholeheartedly based on what you need</span
+              >
+            </p>
+            <button
+              class="hover:bg-unguTua bg-ungu py-3 px-6 font-semibold text-white mt-6"
+            >
+              Read More
+            </button>
+            <div class="flex items-center mt-6">
+              <img
+                src="./assets/img/users.png"
+                alt="users"
+                class="w-[100px] md:w-[115px] h-auto"
+                height="auto"
+              />
+              <p class="text-abu text-lg md:text-2xl ml-3">
+                8,200+ people pinned this
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="find-location-section relative md:mb-40">
+        <img
+          src="./assets/img/building1.png"
+          class="object-scale-down md:object-cover w-full h-[243px] md:h-[543px]"
+          alt="buildings"
+        />
+        <div
+          class="absolute top-32 w-full px-5 md:px-0 md:w-auto md:bottom-0 md:left-6 md:top-[463px]"
+        >
+          <div class="cards bg-white shadow-md flex flex-col md:flex-row p-7">
+            <div
+              class="items flex flex-row items-center w-28 justify-between mr-10"
+            >
+              <div class="fields">
+                <p class="text-sm text-abuTua">Location</p>
+                <p class="font-bold">San Diego</p>
+              </div>
+              <p class="md:border-r-2 border-abuMuda h-8"></p>
+            </div>
+            <div
+              class="items flex flex-row items-center w-28 justify-between mr-10"
+            >
+              <div class="fields">
+                <p class="text-sm text-abuTua">Property Type</p>
+                <p class="font-bold">Deluxe</p>
+              </div>
+              <p class="md:border-r-2 border-abuMuda h-8"></p>
+            </div>
+            <div
+              class="items flex flex-row items-center w-28 justify-between mr-10"
+            >
+              <div class="fields">
+                <p class="text-sm text-abuTua">Average Price</p>
+                <p class="font-bold">$500 - $1000</p>
+              </div>
+            </div>
+            <button
+              class="hover:bg-unguTua bg-ungu font-semibold text-white py-4 px-8 mt-4 md:mt-0"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="get-to-know-section mb-32 md:mb-32">
+        <div
+          class="flex flex-col md:flex-row w-full mt-44 md:mt-8 items-center"
+        >
+          <div class="md:w-1/2 relative">
+            <img
+              src="./assets/img/building2.png"
+              class="w-[500px] h-auto"
+              alt="buildings"
+            />
+            <div
+              class="absolute top-1/2 w-full px-5 md:px-0 md:w-auto md:top-2/3 md:left-6"
+            >
+              <div
+                class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:cursor-pointer duration-300 cards bg-white shadow-md flex flex-col md:flex-row p-7"
+              >
+                <div
+                  class="items flex flex-row items-center w-full mr-10 justify-evenly"
+                >
+                  <p>
+                    <svg
+                      width="42"
+                      height="42"
+                      viewBox="0 0 42 42"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21.3197 3.05322C11.4004 3.05322 3.35748 11.0961 3.35748 21.0155C3.35748 30.9348 11.4004 38.9777 21.3197 38.9777C31.2391 38.9777 39.282 30.9348 39.282 21.0155C39.282 11.0961 31.2391 3.05322 21.3197 3.05322ZM27.0973 21.2921L18.3407 27.6631C18.2927 27.6976 18.2361 27.7182 18.1772 27.7226C18.1182 27.7271 18.0592 27.7152 18.0066 27.6882C17.954 27.6613 17.9098 27.6204 17.8789 27.57C17.848 27.5196 17.8316 27.4616 17.8315 27.4025V14.6686C17.8313 14.6093 17.8476 14.5512 17.8784 14.5006C17.9092 14.45 17.9534 14.409 18.0062 14.382C18.0589 14.355 18.1181 14.3431 18.1771 14.3477C18.2362 14.3523 18.2928 14.3731 18.3407 14.4079L27.0973 20.7749C27.1387 20.8042 27.1725 20.8429 27.1957 20.8879C27.219 20.9329 27.2312 20.9829 27.2312 21.0335C27.2312 21.0842 27.219 21.1341 27.1957 21.1791C27.1725 21.2241 27.1387 21.2629 27.0973 21.2921Z"
+                        fill="#4A6FFF"
+                      />
+                    </svg>
+                  </p>
+                  <div class="fields md:ml-5">
+                    <p class="text-lg font-bold text-black">View House Tour</p>
+                    <div class="flex flex-row items-center">
+                      <p class="text-sm text-ungu">Watch Video</p>
+                      <svg
+                        class="md:ml-5"
+                        width="17"
+                        height="17"
+                        viewBox="0 0 17 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7.60059 11.0754L9.9166 8.75282L7.60059 6.43022"
+                          stroke="#4A6FFF"
+                          stroke-width="0.986938"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-auto md:w-1/2 mt-12 md:mt-0 pl-5 md:pl-0">
+            <h1 class="font-bold text-black text-6xl">Get to Know Us More</h1>
+            <p class="text-abu text-lg mt-4 leading-[240%]">
+              <span class="block"
+                >We are a real estate agency based in Indonesia that has been
+                around for</span
+              >
+              <span class="block"
+                >more than 20 years. We have helped countless people find their
+                dream</span
+              >
+              <span class="block"
+                >home. We also serve consulting requests from our clients from
+                all over the</span
+              ><span class="block">
+                world, and they are very satisfied with our excellent
+                service.</span
+              >
+            </p>
+            <div class="flex flex-col-reverse md:flex-col">
+              <button
+                class="hover:bg-unguTua bg-ungu font-semibold text-white py-4 px-8 mt-7 md:max-w-[165px] w-3/4 self-start md:w-auto"
+              >
+                Read More
+              </button>
+              <div class="flex flex-row md:flex-row mt-7 w-full">
+                <div
+                  class="items flex mb-5 md:mb-0 flex-row items-center justify-between md:mr-10"
+                >
+                  <div class="fields mr-10">
+                    <p class="font-bold text-3xl md:text-5xl text-ungu mb-3">
+                      336+
+                    </p>
+                    <p class="text-sm text-abuTua">Appartment Sale</p>
+                  </div>
+                  <p class="md:border-r-2 border-abuMuda h-8"></p>
+                </div>
+                <div
+                  class="items flex mb-5 md:mb-0 flex-row items-center justify-between md:mr-10"
+                >
+                  <div class="fields mr-10">
+                    <p class="font-bold text-3xl md:text-5xl text-ungu mb-3">
+                      220+
+                    </p>
+                    <p class="text-sm text-abuTua">Completed Project</p>
+                  </div>
+                  <p class="md:border-r-2 border-abuMuda h-8"></p>
+                </div>
+                <div
+                  class="items flex mb-5 md:mb-0 flex-row items-center justify-between md:mr-10"
+                >
+                  <div class="fields mr-10">
+                    <p class="font-bold text-3xl md:text-5xl text-ungu mb-3">
+                      500+
+                    </p>
+                    <p class="text-sm text-abuTua">Happy Client</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Swiper -->
+    <div class="swiper mySwiper mt-14">
+      <div
+        class="title-carousel-featured-property-section container-fluid px-5 md:px-[96px] w-full max-w-[2048px] md:pb-2"
+      >
+        <div class="flex flex-row justify-between">
+          <p class="text-6xl font-bold">Featured Property</p>
+        </div>
+      </div>
+      <div
+        class="navigations swiper-button-next border-[1px] border-ungu rounded-full w-12 h-auto hidden"
+      ></div>
+      <div
+        class="navigations swiper-button-prev border-[1px] border-ungu rounded-full w-12 h-auto"
+      ></div>
+      <div
+        class="swiper-wrapper container-fluid px-5 md:px-[96px] w-full max-w-[2048px]"
+      >
+        <!-- Cards Items -->
+        <div class="swiper-slide">
+          <div class="cards-property border-2 border-abuBorder">
+            <div class="flex flex-col p-2">
+              <img src="./assets/img/property1.png" alt="" class="p-0 m-0" />
+              <div class="flex flex-row justify-between mt-3">
+                <div class="text-left">
+                  <p class="text-abuMuda text-xl text-left">
+                    <span class="font-bold text-3xl text-ungu">$128</span> /
+                    Month
+                  </p>
+                  <p class="text-3x; font-bold mt-3">Nomaden Omah Sekut</p>
+                  <p class="text-lg">San Diego, California. USA</p>
+                </div>
+                <div class="pr-3">
+                  <button
+                    class="rounded-full border-[1px] border-abuBorder w-12 h-12"
+                    style="text-align: -webkit-center"
+                  >
+                    <svg
+                      class="hover:fill-beureum"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 25 25"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g opacity="0.2">
+                        <path
+                          d="M16.9024 3.8351C15.0842 3.8351 13.4569 4.7191 12.4423 6.07523C11.4277 4.7191 9.8003 3.8351 7.98208 3.8351C4.89812 3.8351 2.3968 6.34646 2.3968 9.45051C2.3968 10.6459 2.58767 11.7509 2.91917 12.7756C4.50635 17.7983 9.39849 20.8019 11.8194 21.6256C12.161 21.7461 12.7235 21.7461 13.0651 21.6256C15.486 20.8019 20.3782 17.7983 21.9653 12.7756C22.2969 11.7509 22.4877 10.6459 22.4877 9.45051C22.4877 6.34646 19.9864 3.8351 16.9024 3.8351Z"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Cards Items -->
+        <!-- Cards Items -->
+        <div class="swiper-slide">
+          <div class="cards-property border-2 border-abuBorder">
+            <div class="flex flex-col p-2">
+              <img src="./assets/img/property2.png" alt="" class="p-0 m-0" />
+              <div class="flex flex-row justify-between mt-3">
+                <div class="text-left">
+                  <p class="text-abuMuda text-xl text-left">
+                    <span class="font-bold text-3xl text-ungu">$128</span> /
+                    Month
+                  </p>
+                  <p class="text-3x; font-bold mt-3">Jancuk Omah</p>
+                  <p class="text-lg">San Diego, California. USA</p>
+                </div>
+                <div class="pr-3">
+                  <button
+                    class="rounded-full border-[1px] border-abuBorder w-12 h-12"
+                    style="text-align: -webkit-center"
+                  >
+                    <svg
+                      class="hover:fill-beureum"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 25 25"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g opacity="0.2">
+                        <path
+                          d="M16.9024 3.8351C15.0842 3.8351 13.4569 4.7191 12.4423 6.07523C11.4277 4.7191 9.8003 3.8351 7.98208 3.8351C4.89812 3.8351 2.3968 6.34646 2.3968 9.45051C2.3968 10.6459 2.58767 11.7509 2.91917 12.7756C4.50635 17.7983 9.39849 20.8019 11.8194 21.6256C12.161 21.7461 12.7235 21.7461 13.0651 21.6256C15.486 20.8019 20.3782 17.7983 21.9653 12.7756C22.2969 11.7509 22.4877 10.6459 22.4877 9.45051C22.4877 6.34646 19.9864 3.8351 16.9024 3.8351Z"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Cards Items -->
+        <!-- Cards Items -->
+        <div class="swiper-slide">
+          <div class="cards-property border-2 border-abuBorder">
+            <div class="flex flex-col p-2">
+              <img src="./assets/img/property3.png" alt="" class="p-0 m-0" />
+              <div class="flex flex-row justify-between mt-3">
+                <div class="text-left">
+                  <p class="text-abuMuda text-xl text-left">
+                    <span class="font-bold text-3xl text-ungu">$128</span> /
+                    Month
+                  </p>
+                  <p class="text-3x; font-bold mt-3">Jancuk Omah</p>
+                  <p class="text-lg">San Diego, California. USA</p>
+                </div>
+                <div class="pr-3">
+                  <button
+                    class="rounded-full border-[1px] border-abuBorder w-12 h-12"
+                    style="text-align: -webkit-center"
+                  >
+                    <svg
+                      class="hover:fill-beureum"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 25 25"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g opacity="0.2">
+                        <path
+                          d="M16.9024 3.8351C15.0842 3.8351 13.4569 4.7191 12.4423 6.07523C11.4277 4.7191 9.8003 3.8351 7.98208 3.8351C4.89812 3.8351 2.3968 6.34646 2.3968 9.45051C2.3968 10.6459 2.58767 11.7509 2.91917 12.7756C4.50635 17.7983 9.39849 20.8019 11.8194 21.6256C12.161 21.7461 12.7235 21.7461 13.0651 21.6256C15.486 20.8019 20.3782 17.7983 21.9653 12.7756C22.2969 11.7509 22.4877 10.6459 22.4877 9.45051C22.4877 6.34646 19.9864 3.8351 16.9024 3.8351Z"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Cards Items -->
+        <!-- Cards Items -->
+        <div class="swiper-slide">
+          <div class="cards-property border-2 border-abuBorder">
+            <div class="flex flex-col p-2">
+              <img src="./assets/img/property1.png" alt="" class="p-0 m-0" />
+              <div class="flex flex-row justify-between mt-3">
+                <div class="text-left">
+                  <p class="text-abuMuda text-xl text-left">
+                    <span class="font-bold text-3xl text-ungu">$128</span> /
+                    Month
+                  </p>
+                  <p class="text-3x; font-bold mt-3">Nomaden Omah Sekut</p>
+                  <p class="text-lg">San Diego, California. USA</p>
+                </div>
+                <div class="pr-3">
+                  <button
+                    class="rounded-full border-[1px] border-abuBorder w-12 h-12"
+                    style="text-align: -webkit-center"
+                  >
+                    <svg
+                      class="hover:fill-beureum"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 25 25"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g opacity="0.2">
+                        <path
+                          d="M16.9024 3.8351C15.0842 3.8351 13.4569 4.7191 12.4423 6.07523C11.4277 4.7191 9.8003 3.8351 7.98208 3.8351C4.89812 3.8351 2.3968 6.34646 2.3968 9.45051C2.3968 10.6459 2.58767 11.7509 2.91917 12.7756C4.50635 17.7983 9.39849 20.8019 11.8194 21.6256C12.161 21.7461 12.7235 21.7461 13.0651 21.6256C15.486 20.8019 20.3782 17.7983 21.9653 12.7756C22.2969 11.7509 22.4877 10.6459 22.4877 9.45051C22.4877 6.34646 19.9864 3.8351 16.9024 3.8351Z"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Cards Items -->
+        <!-- Cards Items -->
+        <div class="swiper-slide">
+          <div class="cards-property border-2 border-abuBorder">
+            <div class="flex flex-col p-2">
+              <img src="./assets/img/property2.png" alt="" class="p-0 m-0" />
+              <div class="flex flex-row justify-between mt-3">
+                <div class="text-left">
+                  <p class="text-abuMuda text-xl text-left">
+                    <span class="font-bold text-3xl text-ungu">$128</span> /
+                    Month
+                  </p>
+                  <p class="text-3x; font-bold mt-3">Jancuk Omah</p>
+                  <p class="text-lg">San Diego, California. USA</p>
+                </div>
+                <div class="pr-3">
+                  <button
+                    class="rounded-full border-[1px] border-abuBorder w-12 h-12"
+                    style="text-align: -webkit-center"
+                  >
+                    <svg
+                      class="hover:fill-beureum"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 25 25"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g opacity="0.2">
+                        <path
+                          d="M16.9024 3.8351C15.0842 3.8351 13.4569 4.7191 12.4423 6.07523C11.4277 4.7191 9.8003 3.8351 7.98208 3.8351C4.89812 3.8351 2.3968 6.34646 2.3968 9.45051C2.3968 10.6459 2.58767 11.7509 2.91917 12.7756C4.50635 17.7983 9.39849 20.8019 11.8194 21.6256C12.161 21.7461 12.7235 21.7461 13.0651 21.6256C15.486 20.8019 20.3782 17.7983 21.9653 12.7756C22.2969 11.7509 22.4877 10.6459 22.4877 9.45051C22.4877 6.34646 19.9864 3.8351 16.9024 3.8351Z"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Cards Items -->
+        <!-- Cards Items -->
+        <div class="swiper-slide">
+          <div class="cards-property border-2 border-abuBorder">
+            <div class="flex flex-col p-2">
+              <img src="./assets/img/property3.png" alt="" class="p-0 m-0" />
+              <div class="flex flex-row justify-between mt-3">
+                <div class="text-left">
+                  <p class="text-abuMuda text-xl text-left">
+                    <span class="font-bold text-3xl text-ungu">$128</span> /
+                    Month
+                  </p>
+                  <p class="text-3x; font-bold mt-3">Jancuk Omah</p>
+                  <p class="text-lg">San Diego, California. USA</p>
+                </div>
+                <div class="pr-3">
+                  <button
+                    class="rounded-full border-[1px] border-abuBorder w-12 h-12"
+                    style="text-align: -webkit-center"
+                  >
+                    <svg
+                      class="hover:fill-beureum"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 25 25"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g opacity="0.2">
+                        <path
+                          d="M16.9024 3.8351C15.0842 3.8351 13.4569 4.7191 12.4423 6.07523C11.4277 4.7191 9.8003 3.8351 7.98208 3.8351C4.89812 3.8351 2.3968 6.34646 2.3968 9.45051C2.3968 10.6459 2.58767 11.7509 2.91917 12.7756C4.50635 17.7983 9.39849 20.8019 11.8194 21.6256C12.161 21.7461 12.7235 21.7461 13.0651 21.6256C15.486 20.8019 20.3782 17.7983 21.9653 12.7756C22.2969 11.7509 22.4877 10.6459 22.4877 9.45051C22.4877 6.34646 19.9864 3.8351 16.9024 3.8351Z"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Cards Items -->
+        <!-- Cards Items -->
+        <div class="swiper-slide">
+          <div class="cards-property border-2 border-abuBorder">
+            <div class="flex flex-col p-2">
+              <img src="./assets/img/property1.png" alt="" class="p-0 m-0" />
+              <div class="flex flex-row justify-between mt-3">
+                <div class="text-left">
+                  <p class="text-abuMuda text-xl text-left">
+                    <span class="font-bold text-3xl text-ungu">$128</span> /
+                    Month
+                  </p>
+                  <p class="text-3x; font-bold mt-3">Nomaden Omah Sekut</p>
+                  <p class="text-lg">San Diego, California. USA</p>
+                </div>
+                <div class="pr-3">
+                  <button
+                    class="rounded-full border-[1px] border-abuBorder w-12 h-12"
+                    style="text-align: -webkit-center"
+                  >
+                    <svg
+                      class="hover:fill-beureum"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 25 25"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g opacity="0.2">
+                        <path
+                          d="M16.9024 3.8351C15.0842 3.8351 13.4569 4.7191 12.4423 6.07523C11.4277 4.7191 9.8003 3.8351 7.98208 3.8351C4.89812 3.8351 2.3968 6.34646 2.3968 9.45051C2.3968 10.6459 2.58767 11.7509 2.91917 12.7756C4.50635 17.7983 9.39849 20.8019 11.8194 21.6256C12.161 21.7461 12.7235 21.7461 13.0651 21.6256C15.486 20.8019 20.3782 17.7983 21.9653 12.7756C22.2969 11.7509 22.4877 10.6459 22.4877 9.45051C22.4877 6.34646 19.9864 3.8351 16.9024 3.8351Z"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Cards Items -->
+        <!-- Cards Items -->
+        <div class="swiper-slide">
+          <div class="cards-property border-2 border-abuBorder">
+            <div class="flex flex-col p-2">
+              <img src="./assets/img/property2.png" alt="" class="p-0 m-0" />
+              <div class="flex flex-row justify-between mt-3">
+                <div class="text-left">
+                  <p class="text-abuMuda text-xl text-left">
+                    <span class="font-bold text-3xl text-ungu">$128</span> /
+                    Month
+                  </p>
+                  <p class="text-3x; font-bold mt-3">Jancuk Omah</p>
+                  <p class="text-lg">San Diego, California. USA</p>
+                </div>
+                <div class="pr-3">
+                  <button
+                    class="rounded-full border-[1px] border-abuBorder w-12 h-12"
+                    style="text-align: -webkit-center"
+                  >
+                    <svg
+                      class="hover:fill-beureum"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 25 25"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g opacity="0.2">
+                        <path
+                          d="M16.9024 3.8351C15.0842 3.8351 13.4569 4.7191 12.4423 6.07523C11.4277 4.7191 9.8003 3.8351 7.98208 3.8351C4.89812 3.8351 2.3968 6.34646 2.3968 9.45051C2.3968 10.6459 2.58767 11.7509 2.91917 12.7756C4.50635 17.7983 9.39849 20.8019 11.8194 21.6256C12.161 21.7461 12.7235 21.7461 13.0651 21.6256C15.486 20.8019 20.3782 17.7983 21.9653 12.7756C22.2969 11.7509 22.4877 10.6459 22.4877 9.45051C22.4877 6.34646 19.9864 3.8351 16.9024 3.8351Z"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Cards Items -->
+        <!-- Cards Items -->
+        <div class="swiper-slide">
+          <div class="cards-property border-2 border-abuBorder">
+            <div class="flex flex-col p-2">
+              <img src="./assets/img/property3.png" alt="" class="p-0 m-0" />
+              <div class="flex flex-row justify-between mt-3">
+                <div class="text-left">
+                  <p class="text-abuMuda text-xl text-left">
+                    <span class="font-bold text-3xl text-ungu">$128</span> /
+                    Month
+                  </p>
+                  <p class="text-3x; font-bold mt-3">Jancuk Omah</p>
+                  <p class="text-lg">San Diego, California. USA</p>
+                </div>
+                <div class="pr-3">
+                  <button
+                    class="rounded-full border-[1px] border-abuBorder w-12 h-12"
+                    style="text-align: -webkit-center"
+                  >
+                    <svg
+                      class="hover:fill-beureum"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 25 25"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g opacity="0.2">
+                        <path
+                          d="M16.9024 3.8351C15.0842 3.8351 13.4569 4.7191 12.4423 6.07523C11.4277 4.7191 9.8003 3.8351 7.98208 3.8351C4.89812 3.8351 2.3968 6.34646 2.3968 9.45051C2.3968 10.6459 2.58767 11.7509 2.91917 12.7756C4.50635 17.7983 9.39849 20.8019 11.8194 21.6256C12.161 21.7461 12.7235 21.7461 13.0651 21.6256C15.486 20.8019 20.3782 17.7983 21.9653 12.7756C22.2969 11.7509 22.4877 10.6459 22.4877 9.45051C22.4877 6.34646 19.9864 3.8351 16.9024 3.8351Z"
+                        />
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Cards Items -->
+        <div class="swiper-slide"></div>
+      </div>
+
+      <!-- <div class="swiper-pagination"></div> -->
+    </div>
+    <!-- End Swiper -->
+    <div class="container-fluid px-5 md:px-[96px] md:mt-36 mt-24">
+      <div class="w-full flex flex-col">
+        <p
+          class="text-6xl mb-9 md:mb-0 font-bold md:text-center md:leading-[150%]"
+        >
+          <span class="md:block">Wherever Your Are, you</span> will definitely
+          get a place
+        </p>
+        <p
+          class="text-lg text-abu font-semibold md:text-center md:leading-[150%] md:pt-10"
+        >
+          <span class="block"
+            >Wherever you want to live, don't hesitate to contact us. We will
+            find the best
+          </span>
+          housing even to the ends of the world!
+        </p>
+        <div class="text-center pt-14">
+          <img src="./assets/img/globe.png" alt="globe" />
+        </div>
+      </div>
+      <div class="w-full mt-36 md:px-16">
+        <div
+          class="cards bg-black2 md:h-[403px] md:max-w-screen-[1169px] rounded-xl py-11 md:pt-11px flex justify-center"
+        >
+          <div class="flex flex-col text-center w-full md:w-full self-center">
+            <p
+              class="text-xl md:text-6xl text-white font-semibold leading-[110%]"
+            >
+              <span class="block">Subscribe our</span> Notification, news & blog
+            </p>
+            <div
+              class="field-email h-22 p-3 flex justify-center mt-5 md:mt-14 rounded-sm"
+            >
+              <div
+                class="bg-black3 md:w-[504px] flex flex-col md:flex-row justify-between p-2"
+              >
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  class="h-full text-white w-full bg-black3 text-xl pr-4 focus:outline-none"
+                />
+                <button
+                  class="bg-ungu hover:bg-unguTua text-white font-semibold mt-4 md:mt-0 p-4 h-full md:w-1/3"
+                >
+                  Get Started
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="pb-12">
+      <div class="container-fluid mt-24 px-5 md:px-[96px] md:mt-44">
+        <div class="flex flex-col md:flex-row">
+          <div class="desc-footer flex flex-col md:w-1/4">
+            <div class="flex flex-row">
+              <img src="./assets/img/omahku-logo.png" alt="logo-omahku" />
+              <span class="text-ungu font-bold ml-2 text-2xl">Omahku</span>
+            </div>
+            <p class="text-abu text-lg mt-6 font-medium">
+              Find comfort in the house with us, want to find a home? we are
+              ready to help you wholeheartedly based on what you need
+            </p>
+          </div>
+          <div
+            class="link-footer md:ml-[92px] w-full mt-5 md:mt-0 flex flex-wrap md:flex-row"
+          >
+            <div class="items flex-grow mr-2 mb-4 flex flex-col">
+              <p class="text-lg font-bold">Company</p>
+              <div class="grid gap-4 auto-rows-max mt-6">
+                <a
+                  class="hover:text-black3 text-abu font-semibold text-lg"
+                  href="#"
+                  >About Us</a
+                >
+                <a
+                  class="hover:text-black3 text-abu font-semibold text-lg"
+                  href="#"
+                  >Contact</a
+                >
+                <a
+                  class="hover:text-black3 text-abu font-semibold text-lg"
+                  href="#"
+                  >Career</a
+                >
+                <a
+                  class="hover:text-black3 text-abu font-semibold text-lg"
+                  href="#"
+                  >Blog</a
+                >
+              </div>
+            </div>
+            <div class="items flex-grow mr-2 mb-4 flex flex-col">
+              <p class="text-lg font-bold">Contact Us</p>
+              <div class="grid gap-4 auto-rows-max mt-6">
+                <a
+                  class="hover:text-black3 text-abu font-semibold text-lg"
+                  href="#"
+                  >Website</a
+                >
+                <a
+                  class="hover:text-black3 text-abu font-semibold text-lg"
+                  href="#"
+                  >Email</a
+                >
+                <a
+                  class="hover:text-black3 text-abu font-semibold text-lg"
+                  href="#"
+                  >Whatsapp</a
+                >
+              </div>
+            </div>
+            <div class="items flex-grow mr-2 mb-4 flex flex-col">
+              <p class="text-lg font-bold">Support</p>
+              <div class="grid gap-4 auto-rows-max mt-6">
+                <a
+                  class="hover:text-black3 text-abu font-semibold text-lg"
+                  href="#"
+                  >FAQ</a
+                >
+                <a
+                  class="hover:text-black3 text-abu font-semibold text-lg"
+                  href="#"
+                  >Booking</a
+                >
+                <a
+                  class="hover:text-black3 text-abu font-semibold text-lg"
+                  href="#"
+                  >City Guide</a
+                >
+                <a
+                  class="hover:text-black3 text-abu font-semibold text-lg"
+                  href="#"
+                  >Cancelation Option</a
+                >
+              </div>
+            </div>
+            <div class="items flex-grow mr-2 mb-4 flex flex-col">
+              <p class="text-lg font-bold">Office</p>
+              <div class="grid gap-4 auto-rows-max mt-6">
+                <p class="text-lg text-abu font-semibold">
+                  <span class="md:block">Domino Street, District</span>
+                  <span class="md:block">456, Los angeles USA</span> +44 652 762
+                  887
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright-section mt-20">
+          <div
+            class="flex flex-col md:flex-row justify-between border-t-[1px] border-abu pt-7"
+          >
+            <p class="text-lg text-abu">2020 Griyo inc. All Rights Reserved</p>
+            <div class="sosmed flex flex-row mt-3 md:mt-0">
+              <img src="./assets/img/ig.png" alt="instagram" />
+              <img src="./assets/img/fb.png" alt="facebook" />
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-lg mt-8">
+          Design by
+          <a href="https://dribbble.com/Habibi11" target="_blank"
+            ><span class="text-ungu hover:text-unguTua font-bold"
+              >Habibi</span
+            ></a
+          >
+          developed with ❤ by
+          <a href="https://github.com/dimsurd" target="_blank"
+            ><span class="text-orange font-bold">kitsudev</span></a
+          >
+        </p>
+      </div>
+    </footer>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        freeMode: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          // when window width is >= 320px
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          // when window width is >= 480px
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          // when window width is >= 640px
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        },
+      });
+
+      function myFunction() {
+        var x = document.getElementById("nav");
+        var y = document.getElementById("btn-nav");
+        if (x.className === "hidden") {
+          x.classList.toggle("hidden");
+          y.classList.toggle("hidden");
+        } else {
+          console.log("nav");
+          x.className = "hidden";
+          y.className = "hidden";
+        }
+      }
+    </script>
+  </body>
+</html>
